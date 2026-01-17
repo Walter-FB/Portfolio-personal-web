@@ -1,0 +1,73 @@
+.product-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+}
+
+.product-card{
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2); 
+    width: 300px;   /* Ancho fijo */
+    height: 110px;  /* Alto fijo */
+    display: block;    
+}
+
+.product-container:hover {
+    transform: scale(1.02);
+}
+
+/* Imágenes de los cafés (35% menos de alto) */
+.product-img {
+    width: 100%;
+    max-height: 200px;  /* Ajuste del 35% en altura */
+    object-fit: contain; /* Evita recortes */
+    border-radius: 10px;
+}
+
+/* Sección de supermercados */
+.related-products {
+    margin-top: 15px;
+}
+
+/* Imágenes de los supermercados */
+.supermarket-logo {
+    height: 50px; /* Tamaño base */
+    object-fit: contain;
+}
+
+/* Ajustes individuales */
+.coto {
+    height: 60px; /* Más grande */
+    width: 180px;
+    transform: scale(0.8); /* Hace zoom out dentro de su espacio */
+}
+
+.dia {
+    height: 50px; /* Perfecto */
+    margin-top: 5px;
+}
+
+.jumbo {
+    height: 40px; /* Más pequeño */
+    margin-top: 5px;
+}
+
+
+
+body.cafe-fondo {
+    background-color: #fff1dc; /* beige anaranjado tipo café con leche */
+    color: #40270f;
+}
+
+body.cafe-fondo .product-container {
+    background-color: #fff8f1;
+    border: 1px solid #e0d2c3;
+}
+
+.fecha-Act {
+    font-size: 0.8rem;
+    color: #6c757d; /* gris Bootstrap */
+}

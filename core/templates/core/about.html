@@ -1,0 +1,125 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Coffe-City{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/bg.jpg' %}{% endblock %}
+
+{% block headers %}
+<h1>Cafe Hub</h1>
+<span class="subheading">Los mejores precios en un solo lugar</span>
+{% endblock %}
+
+{% block body_class %}cafe-fondo{% endblock %}
+
+{% block content %}
+
+<!-- Cafe Hub Section -->
+<div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 20px; text-align: center;">
+    <h1> Cafe Hub - Scraper de Descuentos</h1>
+    <br>
+</div>
+<p>
+    <strong>Objetivo:</strong> Cafe Hub busca visualizar todos los precios disponibles en el mercado, con los
+    supermercados
+    principales como representantes, con el objetivo de encontrar el precio más barato y poder comprobar de manera
+    rápida si lo que estas pagando está bien o no. La temática son productos con cafeína, así que encontrarás
+    exclusivamente de los mismos. <em>(Evitá los cafés torrados)</em>
+    <br><br>
+    ¿Por qué? Quería utilizar la programación para crear algo útil y se me ocurrió esto.
+    Espero que te guste.
+</p>
+
+<br><br>
+
+<div class="container">
+    <div class="row">
+        {% for cafe in productos %}
+        <div class="col-md-6 mb-4">
+            <div class="product-container">
+                <div class="main-product text-center">
+                    <img src="{% static cafe.imagen_url %}" alt="{{ cafe.nombre }}" class="product-img">
+                    <h2 class="product-title">{{ cafe.nombre_presentable }}</h2>
+                    <p class="product-description"></p>
+                </div>
+                <div class="related-products d-flex justify-content-around align-items-center">
+                    <div class="product-card">
+                        <img src="{% static 'core/img/coto.png' %}" alt="Coto" class="supermarket-logo coto">
+                        <p>
+                            Coto:
+                            {% if cafe.is_cheapest_coto %}
+                            <span style="color: #28a745; font-weight: bold;">
+                                🏆 ${{ cafe.precio_coto_f }}
+                            </span>
+                            {% else %}
+                            <strong>
+                                ${{ cafe.precio_coto_f }}
+                            </strong>
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="product-card">
+                        <img src="{% static 'core/img/dia.png' %}" alt="Día" class="supermarket-logo dia">
+                        <p>
+                            Día:
+                            {% if cafe.is_cheapest_dia %}
+                            <span style="color: #28a745; font-weight: bold;">
+                                🏆 ${{ cafe.precio_dia_f }}
+                            </span>
+                            {% else %}
+                            <strong>
+                                ${{ cafe.precio_dia_f }}
+                            </strong>
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="product-card">
+                        <img src="{% static 'core/img/jumbo.webp' %}" alt="Jumbo" class="supermarket-logo jumbo">
+                        <p>
+                            Jumbo:
+                            {% if cafe.is_cheapest_jumbo %}
+                            <span style="color: #28a745; font-weight: bold;">
+                                🏆 ${{ cafe.precio_jumbo_f }}
+                            </span>
+                            {% else %}
+                            <strong>
+                                ${{ cafe.precio_jumbo_f }}
+                            </strong>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                <p class="fecha-Act">Actualizado: {{ cafe.fecha_actualizacion|date:"d/m/Y" }}</p>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Podio de Ahorro -->
+    <div class="container"
+        style="max-width: 900px; margin: 40px auto; padding: 20px; text-align: center; background-color: #f8f9fa; border-radius: 10px; border: 1px solid #ddd;">
+        <h2>🏆 Podio del Ahorro - Cafe Hub</h2>
+        <p style="color: #666; font-style: italic;">¿Quién tiene los mejores precios hoy?</p>
+        <br>
+
+        <div style="font-size: 1.25em; line-height: 1.8;">
+            <p>
+                🥇 <strong style="color: #d4af37; font-size: 1.2em;">1er Lugar:</strong>
+                {{ podio.0.super }} ({{ podio.0.cantidad }} productos más baratos)
+            </p>
+            <p>
+                🥈 <strong style="color: #c0c0c0;">2do Lugar:</strong>
+                {{ podio.1.super }} ({{ podio.1.cantidad }} productos más baratos)
+            </p>
+            <p>
+                🥉 <strong style="color: #cd7f32;">3er Lugar:</strong>
+                {{ podio.2.super }} ({{ podio.2.cantidad }} productos más baratos)
+            </p>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9em; color: #888;">
+            *Basado en la cantidad total de precios más bajos encontrados hoy. (No incluye descuentos)
+        </p>
+
+    </div>
+</div>
+{% endblock %}

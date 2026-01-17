@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/contact-bg.jpg' %}{% endblock %}
+
+{% block headers %}
+<h1>Contacto</h1>
+<span class="subheading"></span>
+{% endblock %}
+
+{% block content %}
+<div class="row my-5">
+    <div class="col-lg-7 col-md-8 offset-lg-1">
+        <p>¿Tenés una propuesta, una idea?
+            Estamos abierto a oportunidades, proyectos y colaboraciones.
+        </p>
+        <p>Podés contactarme por estos medios:</p>
+        <p><b>Teléfono:</b> +54 11 31720843</p>
+        <p><b>Mail:</b> wberrutto@gmail.com</p>
+    </div>
+    <div class="col-lg-3 col-md-4">
+        <img class="img-fluid avatar" src="{% static 'core/img/avatar2.png' %}" alt="">
+    </div>
+</div>
+{% endblock %}

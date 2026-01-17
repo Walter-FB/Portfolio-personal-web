@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Portada{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/home-bg.jpg' %}{% endblock %}
+
+{% block headers %}
+<h1>Walter Franco Berrutto</h1>
+<span class="subheading">Desarrollador de Software</span>
+{% endblock %}
+
+{% block content %}
+<div class="row my-5">
+    <div class="col-lg-3 col-md-4 offset-lg-1">
+        <img class="img-fluid avatar" src="{% static 'core/img/avatar.png' %}" alt="">
+    </div>
+    <div class="col-lg-7 col-md-8">
+        <h2 class="section-heading">Sobre mí</h2>
+        <p>Hola, soy Walter, estudiante de programación con foco en soluciones prácticas usando Python e IA.</p>
+        <p>Te invito a visitar mi <a href="{% url 'portfolio' %}">portfolio</a>, donde vas a encontrar distintos
+            proyectos. Destaco especialmente el Diario Digital, desarrollado a pedido de un conocido, y <a
+                href="{% url 'about' %}">Cafe Hub</a>, una plataforma que scrapea precios de supermercados para mostrar
+            valores actuales de productos con cafeína, creada con el objetivo de aplicar lo aprendido en mis últimos dos
+            años de formación.</p>
+        <p>Para cualquier consulta, podés escribirme desde la <a href="{% url 'contact' %}">sección de contacto</a> o a
+            <a href="mailto:wberrutto@gmail.com">wberrutto@gmail.com</a>.
+        </p>
+        <div class="clearfix">
+            <a class="btn btn-primary float-right" href="{% url 'portfolio' %}">Ver Portfolio &rarr;</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
