@@ -1,9 +1,11 @@
 from django.shortcuts import render, HttpResponse
 from .models import ProductoJSON
+from portfolio.models import Project
 
 # Vista principal
 def home(request):
-    return render(request, "core/home.html")
+    projects = Project.objects.all()
+    return render(request, "core/home.html", {'projects': projects})
 
 def about(request):
     productos = ProductoJSON.all()

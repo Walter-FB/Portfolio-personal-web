@@ -17,17 +17,61 @@
     <div class="col-lg-7 col-md-8">
         <h2 class="section-heading">Sobre mí</h2>
         <p>Hola, soy Walter, estudiante de programación con foco en soluciones prácticas usando Python e IA.</p>
-        <p>Te invito a visitar mi <a href="{% url 'portfolio' %}">portfolio</a>, donde vas a encontrar distintos
-            proyectos. Destaco especialmente el Diario Digital, desarrollado a pedido de un conocido, y <a
+        <p>Te invito a visitar mi <a href="#portfolio">Portfolio</a>, donde vas a encontrar distintos
+            proyectos. Destaco especialmente el Diario Digital, desarrollado a pedido de un cliente, y <a
                 href="{% url 'about' %}">Cafe Hub</a>, una plataforma que scrapea precios de supermercados para mostrar
             valores actuales de productos con cafeína, creada con el objetivo de aplicar lo aprendido en mis últimos dos
             años de formación.</p>
-        <p>Para cualquier consulta, podés escribirme desde la <a href="{% url 'contact' %}">sección de contacto</a> o a
+        <p>Para cualquier consulta, podés escribirme desde la <a href="#contact">sección de contacto</a> o a
             <a href="mailto:wberrutto@gmail.com">wberrutto@gmail.com</a>.
         </p>
         <div class="clearfix">
-            <a class="btn btn-primary float-right" href="{% url 'portfolio' %}">Ver Portfolio &rarr;</a>
+            <a class="btn btn-primary float-right" href="#portfolio">Ver Portfolio &rarr;</a>
         </div>
+    </div>
+</div>
+<!-- Barrita simple separadora -->
+<hr>
+<!-- Contenido del Portafolio -->
+<div id="portfolio">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2 class="section-heading" style="font-size: 3.5rem;">Portfolio</h2>
+            <hr class="my-4" style="max-width: 150px; border-top: 3px solid #333;">
+        </div>
+    </div>
+    {% for project in projects %}
+    <!-- Proyecto -->
+    <div class="row project">
+        <div class="col-lg-3 col-md-4 offset-lg-1">
+            <img class="img-fluid" src="{{project.image.url}}" alt="">
+        </div>
+        <div class="col-lg-7 col-md-8">
+            <h2 class="section-heading title">{{project.title}}</h2>
+            <p>{{project.description}}</p>
+            {% if project.link %}
+            <p><a href="{{project.link}}">Más información</a></p>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<!-- Barrita simple separadora -->
+<hr>
+<!-- Contenido de Contacto -->
+<div class="row my-5" id="contact">
+    <div class="col-lg-7 col-md-8 offset-lg-1">
+        <h2 class="section-heading">Contacto</h2>
+        &thinsp;
+        <p>¿Tenés una propuesta, una idea?
+            Estamos abierto a oportunidades, proyectos y colaboraciones.
+        </p>
+        <p>Podés contactarme por estos medios:</p>
+        <p><b>Teléfono:</b> +54 11 31720843</p>
+        <p><b>Mail:</b> wberrutto@gmail.com</p>
+    </div>
+    <div class="col-lg-3 col-md-4">
+        <img class="img-fluid avatar" src="{% static 'core/img/avatar2.png' %}" alt="">
     </div>
 </div>
 {% endblock %}
